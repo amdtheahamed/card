@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- CSS Variables based on your Logo --- */
+        /* --- CSS Variables --- */
         :root {
             --primary-color: #222222; /* Dark Grey/Black */
             --accent-color: #E60023;  /* Red */
@@ -32,7 +32,7 @@
             background-color: var(--card-bg);
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
             position: relative;
-            padding-bottom: 80px;
+            padding-bottom: 90px; /* Space for the fixed button */
             min-height: 100vh;
         }
         .header {
@@ -66,6 +66,7 @@
         .name { font-size: 24px; font-weight: 600; color: var(--primary-color); }
         .title { font-size: 14px; color: var(--accent-color); margin-bottom: 10px; font-weight: 500; }
         .description { font-size: 14px; color: var(--text-light); margin-bottom: 20px; line-height: 1.5; }
+        
         .action-buttons { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
         .btn-icon {
             width: 50px; height: 50px; border-radius: 12px;
@@ -77,6 +78,7 @@
         }
         .btn-icon:hover { transform: translateY(-3px); }
         .btn-label { display: block; font-size: 11px; margin-top: 5px; color: var(--text-light); }
+        
         .contact-list { padding: 0 20px; display: flex; flex-direction: column; gap: 15px; }
         .contact-item {
             display: flex; align-items: center; background: #fff;
@@ -90,25 +92,25 @@
             width: 40px; height: 40px; border-radius: 50%;
             background-color: #f4f4f4; color: var(--accent-color);
             display: flex; align-items: center; justify-content: center;
-            font-size: 18px; margin-right: 15px;
+            font-size: 18px; margin-right: 15px; flex-shrink: 0;
         }
         .details { flex-grow: 1; }
         .label { font-size: 11px; color: #999; display: block; margin-bottom: 2px; }
-        .value { font-size: 15px; font-weight: 500; color: var(--text-color); word-break: break-word; }
+        .value { font-size: 14px; font-weight: 500; color: var(--text-color); word-break: break-word; }
         
-        .sticky-footer { position: fixed; bottom: 20px; right: 20px; z-index: 100; }
+        .sticky-footer { position: fixed; bottom: 20px; right: 20px; left: 20px; z-index: 100; display: flex; justify-content: center; }
         .save-btn {
             background-color: var(--accent-color); color: white;
-            padding: 12px 25px; border-radius: 30px; font-weight: 600;
+            padding: 14px 30px; border-radius: 30px; font-weight: 600;
             text-decoration: none; display: flex; align-items: center; gap: 10px;
             box-shadow: 0 4px 15px rgba(230, 0, 35, 0.4); border: 2px solid white;
-            cursor: pointer;
+            cursor: pointer; width: 100%; justify-content: center; max-width: 440px;
         }
 
         @media (min-width: 481px) {
             body { padding: 20px 0; }
             .container { border-radius: 20px; height: auto; min-height: auto; }
-            .sticky-footer { position: absolute; bottom: 20px; right: 20px; }
+            .sticky-footer { position: absolute; bottom: 20px; left: 20px; right: 20px; }
         }
     </style>
 </head>
@@ -171,11 +173,11 @@
                 </div>
             </a>
 
-            <a href="https://www.google.com/maps/search/?api=1&query=Noon+Biriyani+Shop" target="_blank" class="contact-item">
+            <a href="https://www.google.com/maps/search/?api=1&query=Booto+Wifi,+No:12,+Kambar+St,+Potheri,+Kattankulathur,+Tamil+Nadu+603203" target="_blank" class="contact-item">
                 <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
                 <div class="details">
                     <span class="label">Address</span>
-                    <span class="value">123, Main Street, City Name, State</span>
+                    <span class="value">Booto Wifi, No:12, Kambar St, Potheri, Kattankulathur, TN 603203</span>
                 </div>
             </a>
 
@@ -198,15 +200,20 @@
 
     <script>
         function downloadVCard() {
-            // 5. EDIT YOUR CONTACT DETAILS HERE FOR THE SAVE BUTTON
+            // 5. DATA FOR THE SAVE BUTTON
             var firstName = "Noon";
             var lastName = "Biriyani";
-            var phone = "+919876543210";
+            var phone = "+919876543210"; // Enter your number here
             var email = "contact@noonbiriyani.com";
             var website = "https://yourwebsite.com";
-            var address = "123 Main Street, City Name";
+            // Address broken down for better phone compatibility
+            var street = "Booto Wifi, No:12, Kambar St";
+            var city = "Potheri, Kattankulathur";
+            var state = "Tamil Nadu";
+            var zip = "603203";
+            var country = "India";
 
-            // Create the vCard content
+            // Standard VCF 3.0 Format
             var vCardData = [
                 "BEGIN:VCARD",
                 "VERSION:3.0",
@@ -216,16 +223,16 @@
                 "TEL;TYPE=WORK,VOICE:" + phone,
                 "EMAIL:" + email,
                 "URL:" + website,
-                "ADR;TYPE=WORK:;;" + address + ";;;;",
+                "ADR;TYPE=WORK:;;" + street + ";" + city + ";" + state + ";" + zip + ";" + country,
                 "END:VCARD"
             ].join("\n");
 
-            // Create a blob and trigger download
             var blob = new Blob([vCardData], { type: "text/vcard" });
             var url = URL.createObjectURL(blob);
             var link = document.createElement("a");
             link.href = url;
-            link.download = "noon-biriyani.vcf";
+            // The file name that appears on the user's phone
+            link.download = "Noon_Biriyani.vcf"; 
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
