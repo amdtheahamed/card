@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noon Biriyani - Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables based on your Logo --- */
+        :root {
+            --primary-color: #222222; /* The Dark Grey/Black from the Crescent */
+            --accent-color: #E60023;  /* The Red from 'biriyani' text */
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --text-light: #666;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Mobile Container Simulation */
+        .container {
+            width: 100%;
+            max-width: 480px; /* Restricts width on desktop to look like mobile */
+            background-color: var(--card-bg);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            position: relative;
+            padding-bottom: 80px; /* Space for the fixed button */
+            min-height: 100vh;
+        }
+
+        /* --- Header Section --- */
+        .header {
+            background-color: var(--primary-color); /* Black theme */
+            height: 160px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            position: relative;
+        }
+
+        .profile-wrapper {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid var(--card-bg);
+            background-color: white;
+            object-fit: contain; /* Ensures your logo fits inside nicely */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* --- Info Section --- */
+        .info-section {
+            margin-top: 70px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .title {
+            font-size: 14px;
+            color: var(--accent-color); /* Red text for the subtitle */
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .description {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        /* --- Quick Action Buttons (Row) --- */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background-color: var(--accent-color); /* Red buttons */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(230, 0, 35, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .btn-icon:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-label {
+            display: block;
+            font-size: 11px;
+            margin-top: 5px;
+            color: var(--text-light);
+        }
+
+        /* --- Contact List --- */
+        .contact-list {
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #eee;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: background 0.2s;
+        }
+
+        .contact-item:hover {
+            background-color: #fafafa;
+            border-color: var(--accent-color);
+        }
+
+        .icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%; /* Circular icons like screenshot */
+            background-color: #f4f4f4; 
+            color: var(--accent-color); /* Red icons */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-right: 15px;
+        }
+
+        .details {
+            flex-grow: 1;
+        }
+
+        .label {
+            font-size: 11px;
+            color: #999;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .value {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-color);
+            word-break: break-word;
+        }
+
+        /* --- Sticky Save Button --- */
+        .sticky-footer {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .save-btn {
+            background-color: var(--accent-color); /* Red */
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(230, 0, 35, 0.4);
+            border: 2px solid white;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 481px) {
+            body {
+                padding: 20px 0;
+            }
+            .container {
+                border-radius: 20px;
+                height: auto;
+                min-height: auto;
+            }
+            .sticky-footer {
+                position: absolute; /* Stays inside the card on desktop */
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div class="profile-wrapper">
+                <img src="logo.jpg" alt="Noon Biriyani Logo" class="profile-img">
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h1 class="name">Noon Biriyani</h1>
+            <p class="title">Authentic Taste</p>
+            <p class="description">
+                Experience the traditional flavor of our signature Biriyani. 
+                Order now for home delivery or visit us.
+            </p>
+
+            <div class="action-buttons">
+                <div>
+                    <a href="tel:+919876543210" class="btn-icon"><i class="fas fa-phone"></i></a>
+                    <span class="btn-label">Call</span>
+                </div>
+                <div>
+                    <a href="mailto:info@noonbiriyani.com" class="btn-icon"><i class="fas fa-envelope"></i></a>
+                    <span class="btn-label">Email</span>
+                </div>
+                <div>
+                    <a href="https://yourwebsite.com" class="btn-icon"><i class="fas fa-globe"></i></a>
+                    <span class="btn-label">Web</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-list">
+            
+            <a href="tel:+919876543210" class="contact-item">
+                <div class="icon-box"><i class="fas fa-mobile-alt"></i></div>
+                <div class="details">
+                    <span class="label">Mobile Phone (Orders)</span>
+                    <span class="value">+91 98765 43210</span>
+                </div>
+            </a>
+
+            <a href="https://wa.me/919876543210" class="contact-item">
+                <div class="icon-box"><i class="fab fa-whatsapp"></i></div>
+                <div class="details">
+                    <span class="label">WhatsApp</span>
+                    <span class="value">Chat with us</span>
+                </div>
+            </a>
+
+            <a href="mailto:contact@noonbiriyani.com" class="contact-item">
+                <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                <div class="details">
+                    <span class="label">Email</span>
+                    <span class="value">contact@noonbiriyani.com</span>
+                </div>
+            </a>
+
+            <a href="https://maps.google.com" class="contact-item">
+                <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="details">
+                    <span class="label">Address</span>
+                    <span class="value">123, Main Street, City Name, State</span>
+                </div>
+            </a>
+
+            <a href="https://yourwebsite.com/menu" class="contact-item">
+                <div class="icon-box"><i class="fas fa-utensils"></i></div>
+                <div class="details">
+                    <span class="label">Menu</span>
+                    <span class="value">View Our Menu</span>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="sticky-footer">
+            <a href="#" class="save-btn">
+                <i class="fas fa-user-plus"></i> Save to Contacts
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
