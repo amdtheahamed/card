@@ -10,20 +10,15 @@
     <style>
         /* --- CSS Variables based on your Logo --- */
         :root {
-            --primary-color: #222222; /* The Dark Grey/Black from the Crescent */
-            --accent-color: #E60023;  /* The Red from 'biriyani' text */
+            --primary-color: #222222; /* Dark Grey/Black */
+            --accent-color: #E60023;  /* Red */
             --bg-color: #f0f2f5;
             --card-bg: #ffffff;
             --text-color: #333;
             --text-light: #666;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-color);
@@ -31,27 +26,22 @@
             justify-content: center;
             min-height: 100vh;
         }
-
-        /* Mobile Container Simulation */
         .container {
             width: 100%;
-            max-width: 480px; /* Restricts width on desktop to look like mobile */
+            max-width: 480px;
             background-color: var(--card-bg);
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
             position: relative;
-            padding-bottom: 80px; /* Space for the fixed button */
+            padding-bottom: 80px;
             min-height: 100vh;
         }
-
-        /* --- Header Section --- */
         .header {
-            background-color: var(--primary-color); /* Black theme */
+            background-color: var(--primary-color);
             height: 160px;
             border-bottom-left-radius: 30px;
             border-bottom-right-radius: 30px;
             position: relative;
         }
-
         .profile-wrapper {
             position: absolute;
             bottom: -60px;
@@ -59,172 +49,66 @@
             transform: translateX(-50%);
             text-align: center;
         }
-
         .profile-img {
             width: 120px;
             height: 120px;
             border-radius: 50%;
             border: 5px solid var(--card-bg);
             background-color: white;
-            object-fit: contain; /* Ensures your logo fits inside nicely */
+            object-fit: contain;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-
-        /* --- Info Section --- */
         .info-section {
             margin-top: 70px;
             text-align: center;
             padding: 0 20px;
         }
-
-        .name {
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        .title {
-            font-size: 14px;
-            color: var(--accent-color); /* Red text for the subtitle */
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-
-        .description {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        /* --- Quick Action Buttons (Row) --- */
-        .action-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
+        .name { font-size: 24px; font-weight: 600; color: var(--primary-color); }
+        .title { font-size: 14px; color: var(--accent-color); margin-bottom: 10px; font-weight: 500; }
+        .description { font-size: 14px; color: var(--text-light); margin-bottom: 20px; line-height: 1.5; }
+        .action-buttons { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
         .btn-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background-color: var(--accent-color); /* Red buttons */
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            text-decoration: none;
+            width: 50px; height: 50px; border-radius: 12px;
+            background-color: var(--accent-color); color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; text-decoration: none;
             box-shadow: 0 4px 6px rgba(230, 0, 35, 0.3);
             transition: transform 0.2s;
         }
-
-        .btn-icon:hover {
-            transform: translateY(-3px);
-        }
-
-        .btn-label {
-            display: block;
-            font-size: 11px;
-            margin-top: 5px;
-            color: var(--text-light);
-        }
-
-        /* --- Contact List --- */
-        .contact-list {
-            padding: 0 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
+        .btn-icon:hover { transform: translateY(-3px); }
+        .btn-label { display: block; font-size: 11px; margin-top: 5px; color: var(--text-light); }
+        .contact-list { padding: 0 20px; display: flex; flex-direction: column; gap: 15px; }
         .contact-item {
-            display: flex;
-            align-items: center;
-            background: #fff;
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid #eee;
-            text-decoration: none;
-            color: inherit;
+            display: flex; align-items: center; background: #fff;
+            padding: 15px; border-radius: 12px; border: 1px solid #eee;
+            text-decoration: none; color: inherit;
             box-shadow: 0 2px 5px rgba(0,0,0,0.02);
             transition: background 0.2s;
         }
-
-        .contact-item:hover {
-            background-color: #fafafa;
-            border-color: var(--accent-color);
-        }
-
+        .contact-item:hover { background-color: #fafafa; border-color: var(--accent-color); }
         .icon-box {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%; /* Circular icons like screenshot */
-            background-color: #f4f4f4; 
-            color: var(--accent-color); /* Red icons */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            margin-right: 15px;
+            width: 40px; height: 40px; border-radius: 50%;
+            background-color: #f4f4f4; color: var(--accent-color);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px; margin-right: 15px;
         }
-
-        .details {
-            flex-grow: 1;
-        }
-
-        .label {
-            font-size: 11px;
-            color: #999;
-            display: block;
-            margin-bottom: 2px;
-        }
-
-        .value {
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--text-color);
-            word-break: break-word;
-        }
-
-        /* --- Sticky Save Button --- */
-        .sticky-footer {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 100;
-        }
-
+        .details { flex-grow: 1; }
+        .label { font-size: 11px; color: #999; display: block; margin-bottom: 2px; }
+        .value { font-size: 15px; font-weight: 500; color: var(--text-color); word-break: break-word; }
+        
+        .sticky-footer { position: fixed; bottom: 20px; right: 20px; z-index: 100; }
         .save-btn {
-            background-color: var(--accent-color); /* Red */
-            color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(230, 0, 35, 0.4);
-            border: 2px solid white;
+            background-color: var(--accent-color); color: white;
+            padding: 12px 25px; border-radius: 30px; font-weight: 600;
+            text-decoration: none; display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 4px 15px rgba(230, 0, 35, 0.4); border: 2px solid white;
+            cursor: pointer;
         }
 
-        /* Responsive adjustments */
         @media (min-width: 481px) {
-            body {
-                padding: 20px 0;
-            }
-            .container {
-                border-radius: 20px;
-                height: auto;
-                min-height: auto;
-            }
-            .sticky-footer {
-                position: absolute; /* Stays inside the card on desktop */
-                bottom: 20px;
-                right: 20px;
-            }
+            body { padding: 20px 0; }
+            .container { border-radius: 20px; height: auto; min-height: auto; }
+            .sticky-footer { position: absolute; bottom: 20px; right: 20px; }
         }
     </style>
 </head>
@@ -251,7 +135,7 @@
                     <span class="btn-label">Call</span>
                 </div>
                 <div>
-                    <a href="mailto:info@noonbiriyani.com" class="btn-icon"><i class="fas fa-envelope"></i></a>
+                    <a href="mailto:contact@noonbiriyani.com" class="btn-icon"><i class="fas fa-envelope"></i></a>
                     <span class="btn-label">Email</span>
                 </div>
                 <div>
@@ -287,7 +171,7 @@
                 </div>
             </a>
 
-            <a href="https://maps.google.com" class="contact-item">
+            <a href="https://www.google.com/maps/search/?api=1&query=Noon+Biriyani+Shop" target="_blank" class="contact-item">
                 <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
                 <div class="details">
                     <span class="label">Address</span>
@@ -306,11 +190,47 @@
         </div>
 
         <div class="sticky-footer">
-            <a href="#" class="save-btn">
+            <a onclick="downloadVCard()" class="save-btn">
                 <i class="fas fa-user-plus"></i> Save to Contacts
             </a>
         </div>
     </div>
+
+    <script>
+        function downloadVCard() {
+            // 5. EDIT YOUR CONTACT DETAILS HERE FOR THE SAVE BUTTON
+            var firstName = "Noon";
+            var lastName = "Biriyani";
+            var phone = "+919876543210";
+            var email = "contact@noonbiriyani.com";
+            var website = "https://yourwebsite.com";
+            var address = "123 Main Street, City Name";
+
+            // Create the vCard content
+            var vCardData = [
+                "BEGIN:VCARD",
+                "VERSION:3.0",
+                "N:" + lastName + ";" + firstName + ";;;",
+                "FN:" + firstName + " " + lastName,
+                "ORG:" + firstName + " " + lastName,
+                "TEL;TYPE=WORK,VOICE:" + phone,
+                "EMAIL:" + email,
+                "URL:" + website,
+                "ADR;TYPE=WORK:;;" + address + ";;;;",
+                "END:VCARD"
+            ].join("\n");
+
+            // Create a blob and trigger download
+            var blob = new Blob([vCardData], { type: "text/vcard" });
+            var url = URL.createObjectURL(blob);
+            var link = document.createElement("a");
+            link.href = url;
+            link.download = "noon-biriyani.vcf";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
 
 </body>
 </html>
